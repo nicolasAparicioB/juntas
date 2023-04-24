@@ -1,0 +1,23 @@
+
+
+    /* ::ng-deep p-menubar a  {
+        border: none;
+    }
+
+    ::ng-deep p-menubar li  a span  {
+       color: #FFFFFF !important;
+    }
+
+
+    ::ng-deep p-menubar p-menubarsub   {
+        color: #FFFFFF !important;
+        background-color: red;
+     } */
+
+     /* p-element p-menuitem ng-star-inserted p-menuitem-active */
+     /* p-ripple p-element p-menuitem-link ng-star-inserted */
+
+     img{
+        width: 40px;
+        margin-left: 20px;
+     }

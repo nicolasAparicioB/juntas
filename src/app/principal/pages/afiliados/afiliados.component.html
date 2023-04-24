@@ -1,0 +1,176 @@
+
+
+<div class="card">
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Agregar" icon="pi pi-plus" class="p-button-success mr-2" (click)="openNew()" ></button>
+        </ng-template>
+    </p-toolbar>
+
+    <p-table #dt [value]="products" [rows]="10" [paginator]="true"  [tableStyle]="{'min-width': '75rem'}" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Lista de afiliados</h5>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th  style="min-width:3rem">Nombre</th>
+                <th  style="min-width:3rem">Telefono</th>
+                <th style="min-width:3rem">Edad</th>
+                <th  style="min-width:3rem">Genero </th>
+                <th style="min-width:3rem">Ciudad</th>
+                <th  style="min-width:3rem">Email </th>
+                <th  style="min-width:3rem">Tipo de identificacion</th>
+                <th style="min-width:3rem">Numero de identificacion</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{product.nombre}}</td>
+                <td>{{product.telefono}}</td>
+                <td>{{product.edad}}</td>
+                <td>{{product.genero}}</td>
+                <td>{{product.ciudad}}</td>
+                <td>{{product.email}}</td>
+                <td>{{product.tipoIdentificacion}}</td>
+                <td>{{product.numeroIdentificacion}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-eye" class="p-button-rounded p-button-warning"  ></button>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editProduct(product)" ></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteProduct(product)" ></button>
+                </td>
+            </tr>
+        </ng-template>
+
+
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                En total son {{products ? products.length : 0 }} afiliados.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="Datos del afiliado" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+
+        <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">   
+        <div class="field">
+            <label >Id</label>
+            <p-inputNumber formControlName="idAfiliado" [useGrouping]="false" ></p-inputNumber>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Nombre</label>
+            <input type="text" pInputText  formControlName="nombre"   />
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Telefono</label>
+            <p-inputNumber formControlName="telefono" [useGrouping]="false"></p-inputNumber>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Edad</label>
+            <p-inputNumber formControlName="edad" [useGrouping]="false"></p-inputNumber>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Correo</label>
+            <input type="text" pInputText formControlName="email"   />
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Tipo de identificacion</label>
+            <p-dropdown [options]="documentos" placeholder="Seleccione" optionLabel="name" formControlName="tipoIdentificacion"></p-dropdown>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Numero de identificacion</label>
+            <p-inputNumber formControlName="numIdentificacion" [useGrouping]="false"></p-inputNumber>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Ciudad</label>
+            <input type="text" pInputText formControlName="ciudad" />
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Departamento</label>
+            <input type="text" pInputText formControlName="departamento"   />
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Dirección</label>
+            <input type="text" pInputText formControlName="direccion"/>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Genero</label>
+            <p-dropdown placeholder="Seleccione" [options]="genero" optionLabel="name" formControlName="genero"></p-dropdown>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Ocupacion</label>
+            <input type="text" pInputText formControlName="ocupacion"  />
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Fecha de nacimiento</label>
+            <p-calendar formControlName="fecNacimiento"></p-calendar>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Comicion trabajo</label>
+            <input type="text" pInputText id="name" formControlName="comisionTrabajo"   />
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Huella</label>
+            <input type="text" pInputText formControlName="huella"   />
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Fecha de afiliacion</label>
+            <p-calendar formControlName="fecAfiliacion"></p-calendar>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+        <div class="field">
+            <label >Estado</label>
+            <p-selectButton [options]="estado" optionLabel="name"  formControlName="estado"></p-selectButton>
+            <!-- <small class="p-error">Name is required.</small> -->
+        </div>
+
+                    <small *ngIf="formError" class="p-error">Campos invalidos</small>
+
+        <div class="field submit">
+            <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text" (click)="hideDialog()" ></button>
+            <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text"></button>
+        </div>
+
+    </form>
+    </ng-template>
+
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+

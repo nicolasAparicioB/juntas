@@ -1,0 +1,76 @@
+.container {
+ background-image: url(https://www.siscom.cinegemp.com/wp-content/uploads/2023/03/foto-fondo-siscom.jpg);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10%;
+}
+
+.container__card {
+  background-color: #123E27;
+  border-radius: 10px;
+  max-width: 400px;
+  padding: 30px;
+}
+
+h1 {
+  color: #FFFFFF;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+h5 {
+  margin: 20px 0px 10px 0px;
+  color: #FFFFFF;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  margin-top: 20px;
+  width: 100%;
+background-color: #ffc03d;
+border: none;
+}
+
+.button:hover {
+background-color: #bd902f;
+}
+
+.container__info {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+img{
+ max-width: 250px;
+  margin: 0 auto;
+}
+
+h2{
+margin: 0px;
+color: #1b1a1a;
+font-size: 35px;
+}
+
+h3{
+  color: #1b1a1a;
+  font-size: 15px;
+}
+
+@media(min-width:768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .container__info {
+    margin-top: 0px;
+  }
+}

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="container__info">
+    <h2>Sofware Jacs</h2>
+    <h3>Programa SISCOM para Jutas de Accion Comunal.</h3>
+    <img
+      src="https://www.siscom.cinegemp.com/wp-content/uploads/2023/03/LOGO-SISCOM.png"
+      alt="logo"
+    />
+  </div>
+  <div class="container__card">
+    <form autocomplete="off" [formGroup]="miFormulario2" (ngSubmit)="login()">
+      <h1>Login</h1>
+      <h5>Usuario</h5>
+      <input
+        class="input"
+        id="float-input"
+        type="text"
+        pInputText
+        formControlName="usuario"
+      />
+      <h5>Contraseña</h5>
+      <input
+        class="input"
+        id="float-input"
+        type="password"
+        pInputText
+        formControlName="password"
+      />
+      <button
+        pButton
+        pRipple
+        label="Login"
+        class="button"
+      ></button>
+    </form>
+  </div>
+</div>
+<!-- [style]="{'width':'100%'}" -->
+<!-- routerLink="/meeting"  redireccion-->
+<!-- (click)="login()" -->
